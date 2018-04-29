@@ -9,7 +9,8 @@
 
     public function index(){
       $data = [
-        'title' => 'SharePosts'
+        'title' => 'SharePosts',
+        'description' => 'Simple social network build on the traversyMvc PHP framework'
 
       ] ;
 
@@ -18,10 +19,11 @@
 
     public function about(){
       $data = [
-        'title' => 'About Us'
+        'title' => 'About Us',
+        'description' => 'App to share post with other users'
       ] ;
 
-      $this->view('pages/index', $data);
+      $this->view('pages/about', $data);
     }
   }
 
