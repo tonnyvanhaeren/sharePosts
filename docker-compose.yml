@@ -1,0 +1,28 @@
+#docker run -d -p 80:80 --name my-apache-php-app -v "$PWD":/var/www/html tonnyvanhaeren/php:7.2.3 
+version: '3'
+services:
+  app:
+    build: .
+    image: tonnyvanhaeren/shareposts:1.0
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html
+    links:
+      - mysql
+      - redis
+    env_file:
+      - app.env
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    env_file:
+      - database.env
+    volumes:
+      - ~/data/mysql-shareposts:/var/lib/mysql  
+  redis:
+    image: redis:4.0-alpine
+    ports:
+      - 16379:6379
+

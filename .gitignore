@@ -1,0 +1,10 @@
+.DS_Store
+
+/vendor/
+app.env
+database.env
+composer
+composer.phar
+/config
+/oopsandbox
+/pdotest
