@@ -83,7 +83,7 @@
 
     // Get the rows count
     public function rowCount(){
-      return $this->stmt_<rowCount();
+      return $this->stmt->rowCount();
     }
 
   }
