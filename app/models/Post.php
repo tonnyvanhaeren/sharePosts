@@ -45,8 +45,35 @@
       return $post;
     }
 
+    public function updatePost($data){
+      $this->db->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
+      $this->db->bind(':id', $data['id']);
+      $this->db->bind(':title', $data['title']);
+      $this->db->bind(':body', $data['body']);
 
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function deletePost($id){
+      // check current user
+      $post = $this->getPostById($id);
+
+      if($post->user_id != $_SESSION['user_id']){
+        redirect('posts');
+      }
+
+      $this->db->query('DELETE FROM posts WHERE id = :id');
+      $this->db->bind(':id', $id);
+
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
-
-
 ?>
